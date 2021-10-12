@@ -1,5 +1,6 @@
 ---
 title: "Block Pruning For Faster Transformers"
+author: "Se Jung Kwon"
 categories:
   - Paper Review
 tags:
