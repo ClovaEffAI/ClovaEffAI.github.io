@@ -16,11 +16,11 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Toward Efficient AI"
+title                    : "Site Title"
 title_separator          : "-"
-subtitle                 : "by Efficient AI Team, CLOVA, NAVER"
-name                     : "Efficient AI at Clova, NAVER"
-description              : "NAVER Clova의 Efficient AI 팀에서 운영하는 기술블로그입니다. 기술/논문 소개가 주를 이루고 있습니다."
+subtitle                 : # site tagline that appears below site title in masthead
+name                     : "Your Name"
+description              : "An amazing website."
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -101,11 +101,11 @@ analytics:
 
 # Site Author
 author:
-  name             : "Efficient AI Team"
+  name             : "Your Name"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "wow"
+  bio              : "I am an **amazing** person."
   location         : "Somewhere"
-  email            : "sejung.kwon@navercorp.com"
+  email            :
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
