@@ -1,4 +1,14 @@
-## Understanding and Overcoming the Challenges of Efficient Transformer Quantization
+---
+title: "Understanding and Overcoming the Challenges of Efficient Transformer Quantization"
+categories:
+  - Paper Review
+tags:
+  - Uniform Quantization
+  - BERT
+  - Model Compression
+---
+
+## 
 ### 저자/학회 특이사항 : Qualcomm 
 ### Link : https://arxiv.org/abs/2109.12948v1
 
