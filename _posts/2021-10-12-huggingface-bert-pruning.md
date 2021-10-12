@@ -20,3 +20,6 @@ tags:
  - BERT에 대해서만 했기 때문에 다른 variation들, 혹은 NLG 모델에 대해서는 다시 생각해볼 필요가 있지만, 2가지 측면에서 레슨을 얻을수 있는데. 
    1. 열심히 Knowledge Distillation을 돌린 TinyBERT같은 variation보다 나은 결과를 Pruning만으로 얻을수 있음. 
    2. BERT-base를 압축하는 것보다 BERT-large 모델을 더 많이 압축하는 것이 더 효율적일수 있음. 
+
+
+Written by Se Jung Kwon (*sejung.kwon@navercorp.com*)
