@@ -10,7 +10,6 @@ tags:
   - Model Compression
 ---
 
-## 
 ### 저자/학회 특이사항 : HuggingFace, EMNLP 2021
 ### Link : https://arxiv.org/abs/2109.04838
 
