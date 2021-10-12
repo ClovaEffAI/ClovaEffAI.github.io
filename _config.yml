@@ -101,11 +101,11 @@ analytics:
 
 # Site Author
 author:
-  name             : "Your Name"
+  name             : "Efficient AI @ Clova"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I am an **amazing** person."
-  location         : "Somewhere"
-  email            :
+  bio              : "딥러닝 모델과 인퍼런스 컴퓨팅 시스템 사이의 다리를 놓는 Efficient AI팀의 기술 블로그입니다. AI 모델 압축, 경량화, 최적화, AI를 위한 하드웨어 등의 이슈를 다룹니다."
+  location         : "South Korea"
+  email            : "sejung.kwon@navercorp.com"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
