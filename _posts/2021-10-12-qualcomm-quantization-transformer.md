@@ -1,5 +1,6 @@
 ---
 title: "Understanding and Overcoming the Challenges of Efficient Transformer Quantization"
+author: "Se Jung Kwon"
 categories:
   - Paper Review
 tags:
