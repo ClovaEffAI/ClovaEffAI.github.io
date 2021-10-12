@@ -1,8 +1,8 @@
 ---
-layout: single
+layout: archive
 permalink: /about/
 title: "About"
-toc: true
+author_profile: true
 ---
 
  - Hey!
