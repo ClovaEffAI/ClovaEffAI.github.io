@@ -1,6 +1,6 @@
 Se Jung Kwon:
   name        : "권세중 (Kwon, Se Jung)"
-  bio         : "Discrete Event Modeling and Simulation, Deep Learning Model Compression Algorithm/Tools/"
+  bio         : "AI Researcher at NAVER, CLOVA. Deep Learning Model Compression Algorithm/Tools/Inference Systems."
   avatar      : "/assets/images/sjkwon.jpg"
   links:
     - label: "Email"
@@ -9,3 +9,40 @@ Se Jung Kwon:
     - label: "linkedin"
       icon: "fab fa-fw fa-linkedin"
       url: "https://www.linkedin.com/in/sejung-kwon/"
+
+Dongsoo Lee:
+  name        : "이동수 (Lee, Dongsoo)"
+  bio         : "bio"
+  avatar      : "/assets/images/dslee.jpg"
+  links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:dongsoo.lee@navercorp.com"
+    - label: "linkedin"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/dongsoo-lee-45028017/"
+
+Byeongwook Kim:
+  name        : "김병욱 (Byeongwook Kim)"
+  bio         : "bio"
+  avatar      : "/assets/images/bwkim.jpg"
+  links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:byeonguk.kim@navercorp.com"
+#    - label: "linkedin"
+#      icon: "fab fa-fw fa-linkedin"
+#      url: "https://www.linkedin.com/in/sejung-kwon/"
+
+
+Baeseong Park:
+  name        : "박배성"
+  bio         : "bio"
+  avatar      : "/assets/images/bspark.jpg"
+  links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:baeseong.park@navercorp.com"
+#    - label: "linkedin"
+#      icon: "fab fa-fw fa-linkedin"
+#      url: "https://www.linkedin.com/in/sejung-kwon/"
