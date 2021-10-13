@@ -30,7 +30,7 @@ Link: https://arxiv.org/pdf/2107.11442.pdf
   
 #### ALDS
   - 제안하는 Compression Framework의 이름은 ALDS (Automatic Layer-wise Decomposition Selector)이다.
-  - <img src="/assets/images/2021-10-13-lra-mit-haifa/figure3.png" width="70%" height="70%" title="Figure 2" alt="Figure2"/> 
+  - <img src="/assets/images/2021-10-13-lra-mit-haifa/figure3.png" width="100%" height="100%" title="Figure 2" alt="Figure2"/> 
   - 기본적으로 Global step과 Local step을 반복하는 것을 알 수 있다.
   - Global Step은 CR(목표 압축율)과 k_{1...L}(각 layer별 decomposition subset의 개수)을 받아서, 각 layer마다 parameter number constraints(b^{1...L})을 Local Step에 전달한다.
   - Local Step은 주어진 layer별 budget을 들고 그것을 만족시키는 k를 다시 구해서 Global Step으로 넘기고
@@ -39,7 +39,7 @@ Link: https://arxiv.org/pdf/2107.11442.pdf
 #### SVD 하는 방법 (k가 대체 무엇이냐?)
   - 기본적으로 4d tensor를 SVD하는 방법은 f filter, c channel, 3x3 conv로 이루어진 (f, c, 3, 3) weight을 f x c x 3 x 3으로 folding(lowering)한 후에 f x j와 j x c x 3 x 3으로 LRA+SVD하는 방식. 이것을 다시 conv로 변환하면 (f,j,1,1) 1x1 conv layer와 (j,c,3,3) 3x3 conv layer로 구성시킬수 있음.
   - 여기서 k값이 다시 등장하는데, channel 방향으로 k개로의 subset으로 나눈다. 잘 몰랐었는데, 오래전 Denton[3]의 논문도 그렇고, SVD를 하기 전에 여러개의 subset으로 나는 것이 효과적인 방법으로 여겨져왔던듯 하다.
-  -  <img src="/assets/images/2021-10-13-lra-mit-haifa/figure2.png" width="70%" height="70%" title="Figure 2" alt="Figure3"/> 
+  -  <img src="/assets/images/2021-10-13-lra-mit-haifa/figure2.png" width="100%" height="100%" title="Figure 2" alt="Figure3"/> 
   -  위 그림은 이 과정을 나타낸 논문의 Figure 3 그림이다. 왼쪽의 convolution layer + input 구성이 오른쪽처럼 Approximation 된다.
   -  즉, 다음과 같은 과정이다.
     1) input channle f에서 output channle c로 가는 conv를 f에서 jk로 reduction을 시키고,
@@ -57,7 +57,7 @@ Link: https://arxiv.org/pdf/2107.11442.pdf
   - e epoch 돌린 Pre-trained model이 만들고, compression을 하고, r epoch동안 [e-r, e] epoch에서 사용된 hyperparameter로 re-training을 한다. 그리고 이 과정을 계속 반복한다. 
 
 #### Results
-  - <img src="/assets/images/2021-10-13-lra-mit-haifa/figure5.png" width="70%" height="70%" title="Figure 2" alt="Figure5"/> 
+  - <img src="/assets/images/2021-10-13-lra-mit-haifa/figure5.png" width="100%" height="100%" title="Figure 2" alt="Figure5"/> 
   - 결과는 좋은 그림을 그리고 있다. 첨에는 왜 그럴까 싶었는데, 걍 1x1과 group conv로 이루어진 새로운 arch.를 만드니까 그런거 아닌가 싶어졌다.
   - 때문에 기존의 SVD 방법들과 정성적인 비교는 불가능하다는 생각이 들기 시작했다. 어찌보면 당연히 좋아야하는거 아닌가 싶어짐. 오히려 1x1, group conv.를 적극 쓰는 그 이후의 경량 네트워크들과 비교해야할 것 같다. 게다가 layer-wise로 다른 rank를 주잖아? 이건 비교가 사기인데..
   - 그러니까 ResNet까지 밖에 못했겠지?
