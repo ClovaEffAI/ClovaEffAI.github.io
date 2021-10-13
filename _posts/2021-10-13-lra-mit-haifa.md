@@ -13,6 +13,8 @@ tags:
   - ResNet-18
 ---
 
+Link: https://arxiv.org/pdf/2107.11442.pdf
+
 #### 저자/학회 특이사항
   - Neurips 2021 Accepted Paper
   - 저자는 MIT CSAIL과(Lottery paper 나오는 그곳, 같은 저자는 아님) Haifa 대학(이스라엘)으로 구성되어 있음. 
@@ -63,3 +65,8 @@ tags:
 #### 결론
   - *minimizing the maximum relative error*라는 방법은 한번 생각을 해볼 필요가 있을것 같다. 
   - 내가 만약 심사를 했으면, 경량 네트워크 관점에서 페이퍼를 다시 써오라고 했을텐데 어떻게 억셉이 된건지 살짝 의문스럽다. Appendix를 봐도 그렇고 정성이 묻어나오는 페이퍼이긴 하다.
+
+[1] Kim, Y. D., Park, E., Yoo, S., Choi, T., Yang, L., & Shin, D. Compression of deep convolutional neural networks for fast and low power mobile applications. ICLR 2016.
+[2] Lee, D., Kwon, S. J., Kim, B., & Wei, G. Y. Learning low-rank approximation for cnns. arXiv preprint arXiv:1905.10145.
+[3] Denton, E. L., Zaremba, W., Bruna, J., LeCun, Y., & Fergus, R. Exploiting linear structure within convolutional networks for efficient evaluation. NIPS 2014.
+[4] Renda, A., Frankle, J., & Carbin, M. Comparing rewinding and fine-tuning in neural network pruning. ICLR 202.
