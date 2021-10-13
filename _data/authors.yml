@@ -1,0 +1,11 @@
+Se Jung Kwon:
+  name        : "권세중 (Kwon, Se Jung)"
+  bio         : "Discrete Event Modeling and Simulation, Deep Learning Model Compression Algorithm/Tools/"
+  avatar      : "/assets/images/sjkwon.jpg"
+  links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:sejung.kwon@navercorp.com"
+    - label: "linkedin"
+      icon: "fab fa-fw fa-linkedin-square"
+      url: "https://www.linkedin.com/in/sejung-kwon/"
