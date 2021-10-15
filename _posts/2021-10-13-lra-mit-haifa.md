@@ -49,8 +49,8 @@ Link: https://arxiv.org/pdf/2107.11442.pdf
 #### Global Step에서 Layer별로 rank와 k (group conv의 개수)를 optimization 하는 방법
   - 논문에서 여러차례 언급하고 있듯이, 모든 경우를 다 탐색해볼 수는 없다. 그래서 여기서는 *minimizing the maximum relative error incurred across layers*라는 방법을 사용한다.
   - Relative error는 decompistion 전후의 weight 값의 차이의 norm을 original weight의 norm으로 나눈 값이다 (Equation 1). 이 값을 모든 layer가 비슷한 값을 가지도록 누른다는 뜻은, 모든 layer에 골고루 error가 들어가도록 함으로써 어떤 특정 layer를 망가뜨리지 않겠다는 뜻이다.
-  - 2.2장에서 복잡한 증명이 있는데 패쓰. 
-  - 2.3장에서는 이것을 알고리즘으로 보여주고 있는데, 결국 heuristic하게, k값 정해보고 (처음에는 random), locally SVD 해보고, error를 기록하고, 이것을 converge할때까지 반복하는 것이다. 2.2장은 이것이 왜 가능한지를 증명하는 내용.
+  - 2.2장에서 복잡한 증명이 있는데, 2.3장의 알고리즘이 바운드 된다는 것은 증명하는 내용으로 보인다.
+  - 2.3장에서는 이것을 알고리즘으로 보여주고 있는데, 결국 heuristic하게, k값 정해보고 (처음에는 random), locally SVD 해보고, error를 기록하고, 이것을 converge할때까지 반복하는 것이다.
 
 #### Retraining 방법
   - Renda의 Rewinding paper[4]에서 영향을 받았다고 한다.
@@ -58,15 +58,19 @@ Link: https://arxiv.org/pdf/2107.11442.pdf
 
 #### Results
   - <img src="/assets/images/2021-10-13-lra-mit-haifa/figure5.png" width="100%" height="100%" title="Figure 2" alt="Figure5"/> 
-  - 결과는 좋은 그림을 그리고 있다. 첨에는 왜 그럴까 싶었는데, 걍 1x1과 group conv로 이루어진 새로운 arch.를 만드니까 그런거 아닌가 싶어졌다.
-  - 때문에 기존의 SVD 방법들과 정성적인 비교는 불가능하다는 생각이 들기 시작했다. 어찌보면 당연히 좋아야하는거 아닌가 싶어짐. 오히려 1x1, group conv.를 적극 쓰는 그 이후의 경량 네트워크들과 비교해야할 것 같다. 게다가 layer-wise로 다른 rank를 주잖아? 이건 비교가 사기인데..
-  - 그러니까 ResNet까지 밖에 못했겠지?
+  - 결과는 좋은 그림을 그리고 있다. 첨에는 왜 그럴까 싶었는데, 그냥 1x1과 group conv로 이루어진 새로운 arch.를 만들기 때문인것 같다. 
+  - 때문에 기존의 SVD 방법들과 정성적인 비교는 불가능할 것 같다. 어찌보면 당연히 성능 개선이 있어야하는 상황으로 보여진다. 오히려 1x1, group conv.를 적극 쓰는 그 이후의 경량 네트워크들과 비교해야할 것 같다. 게다가 layer-wise로 다른 rank를 주기 때문에 기존의 SVD 방법론들과 1:1비교는 불가능할것 같다. 
+  - 그러니까 ResNet까지 밖에 못했을 것이라는 추정이 가능하다. 다른 경량 CNN에는 적용할수가 없을것 같다. 
 
-#### 결론
+#### 총평
   - *minimizing the maximum relative error*라는 방법은 한번 생각을 해볼 필요가 있을것 같다. 
-  - 내가 만약 심사를 했으면, 경량 네트워크 관점에서 페이퍼를 다시 써오라고 했을텐데 어떻게 억셉이 된건지 살짝 의문스럽다. Appendix를 봐도 그렇고 정성이 묻어나오는 페이퍼이긴 하다.
+  - 사실 경량 네트워크 관점에서 페이퍼를 다시 써야하는게 아닌가 싶다. Borderline에서 살짝 점수를 잘 받은듯. Appendix를 봐도 그렇고 정성이 묻어나오는 페이퍼이긴 하다.
 
 [1] Kim, Y. D., Park, E., Yoo, S., Choi, T., Yang, L., & Shin, D. Compression of deep convolutional neural networks for fast and low power mobile applications. ICLR 2016.
+
 [2] Lee, D., Kwon, S. J., Kim, B., & Wei, G. Y. Learning low-rank approximation for cnns. arXiv preprint arXiv:1905.10145.
+
 [3] Denton, E. L., Zaremba, W., Bruna, J., LeCun, Y., & Fergus, R. Exploiting linear structure within convolutional networks for efficient evaluation. NIPS 2014.
+
 [4] Renda, A., Frankle, J., & Carbin, M. Comparing rewinding and fine-tuning in neural network pruning. ICLR 202.
+
