@@ -5,7 +5,7 @@ sidebar: true
 author_profile: true
 categories:
   - Paper Review
-tags: // 
+tags:
   - Image Classification
   - Object Detection
   - Efficient Architecture
