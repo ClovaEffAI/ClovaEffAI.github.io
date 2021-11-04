@@ -1,5 +1,5 @@
 ---
-title: "None-deep Networks"
+title: "Non-deep Networks"
 author: "Se Jung Kwon"
 sidebar: true
 author_profile: true
