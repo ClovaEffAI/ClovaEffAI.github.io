@@ -37,7 +37,7 @@ tags:
  - ParNet S/M/L/XL이 존재하며, 모두 Depth는 12이다. width, resolution, stream의 개수로 scaling을 해봤지만 stream의 개수는 결국 3으로 고정하고 resolution을 조금 올렸다. 어떤 scaling 법칙은 없는 것 같다. 약간 되는대로 만든 느낌이 든다. CIFAR10과 ImageNet은 일반적인 input size가 다르기 때문에 모델 구조도 살짝 다릅니다.
 
 #### 결과
- - <img src="/assets/images/2021-11-03-Non-deep-Networks/result.png" width="100%" height="100%" title="Table 1-3" alt="Results"/> 
+ - <img src="/assets/images/2021-11-03-Non-deep-Networks/results.png" width="100%" height="100%" title="Table 1-3" alt="Results"/> 
  - 우선 비교 대상은 ResNet이다. 그 이후에 상당히 다양한 연구들이 있었고, 이 network도 상당히 많이 바꿨음에도 ResNet하고만 비교하는 것은 fair하지 않은 것 같다. 결국 accuracy는 크게 나은 것 같지 않고, FLOPs, 파라미터수가 훨씬 많음에도 불구하고 speed가 빠르다 정도가 장점이 될 수 있을것 같은데 이것 또한 크게 차이가 나지 않는다 (Table 2). RTX 3090에서 쟨 숫자인데, 다양한 환경에서 재봐야 평가가 가능할 것 같다. 게다가 multi-stream 모델의 특성상, stream별로 모델 parallel로 실행 가능한데, 그렇게 실행을 해야지 Table 3에 있듯이 제대로된 속도가 나온다. 
  - 그 외, YOLOv4와 비교도 있고, 좀더 잘나온다 정도이다.
  - 다양한 실험 결과들이 있지만 크게 의미는 없는 것 같아서 여기서 생략. 특히 다양한 실험 결과가 CIFAR10에 몰려 있어서 제대로된 비교라기 어려울것 같다.
