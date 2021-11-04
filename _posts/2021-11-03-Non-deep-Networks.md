@@ -22,7 +22,7 @@ tags:
  - Deep Learning의 시대는 Layer를 얼마나 deep하게 쌓으면서도 Training을 잘되게 할 수 있느냐가 핵심인데, residual connection이 나온 뒤로는 수십개의 layer를 쌓는것이 당연해지고, Transformer 계열로도 이어지고 있다. 하지만 layer 수가 늘어난다는 것은 Dense한 연산을 병렬적으로 돌릴수록 좋은 Compuation 입장에서 좋지 않을 수 있는데, sequantial하게 이어져 있는 layer들을 위해서 계속해서 weight을 바꾸고, activation/normalization 등의 dense하지 않은 연산이 추가 되기 때문이다. 이것을 Training할때는 batch가 해결해주지만, inference할때는 batch를 만든 다는 것이 쉽지 않을 수도 있다. 
  - 본 논문은 이런 관점에서 depth에 대해 접근하고 있는 것 같다. 뒤에 실험 결과들을 보면 depth가 얉은 대신에, parameter 수는 꽤 많다. 즉, 하나의 layer가 뚱뚱하다는 뜻인데, width냐 depth냐 하는 백만번은 들어본 질문을 조금 더 공격적으로 던지는 듯 하다. 제안하는 네트워크의 이름은 ParNet(Parallel Network)이다. 12개의 layer depth만으로 SOTA 수준의 Image Classification / Object detection accuracy를 달성한다고 말한다. Figure 1은 Depth에 따라 그림을 그렸는데, VGG부터 시작해서 쭉 깊어지고 있는 전반적인 방향에 비해, ParNet은 depth는 그대로 두고 width만 늘린것으로 보인다 (물론 단순하게 width를 늘린것은 아니고, multi-stream network에 해당한다. architecture 그림을 보자.)
    - *We show, for the first time, that a classification network with a depth of just 12 can achieve accuracy greater than 80% on ImageNet, 96% on CIFAR10, and 81% on CIFAR100. We also show that a detection network with a low-depth (12) backbone can achieve an AP of 48% on MS-COCO.*
-   - <img src="/assets/images/2021-11-03-Non-deep-Networks/f1.png" width="50%" height="50%" title="Figure 1" alt="Figure1"/> 
+   - <img src="/assets/images/2021-11-03-Non-deep-Networks/f1.png" width="100%" height="100%" title="Figure 1" alt="Figure1"/> 
 
 
 #### Architecture
