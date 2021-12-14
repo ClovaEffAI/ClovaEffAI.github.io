@@ -27,9 +27,8 @@ tags:
   - controller는 low-rank의 곱셈들로 이루어지는데, 큼직큼직하게 미리 연산을 해보고 결과를 가늠한다고 생각해볼수 있을것 같다. 그리고 그 결과를 가지고 straight-through-gumbel-softmax를 통해 training 할때는 0/1을 골라내고 (0/1이 discrete하기 때문에), inference할때는 argmax를 통해 N개의 활성화되는 activation을 골라낸다.
     - forward pass에서는 그냥 argmax로 가고, backward 탈때 softmax로 approximation한다. 이것을 straight-through-gumbel-softmax라고 하는듯.
   -  <img src="/assets/images/2021-12-01-Scaling Transformers/f3.png" width="100%" height="100%" title="Figure 3" alt="Figure 3"/>
-  -  Table 2에서 'Sparse FF 64/128'은 N=64/N=128을 의미한다. 즉, hidden vector 1024개 에서 4096개로 뻥튀기 되었다가 다시 1024로 projection될때, 64/128개만 보겠다는 뜻이다. 그러면 low-rank는 4096/64=64, 4096/128=32가 된다. 그만큼 빨라지는 것을 확인할 수 있다. N이 늘어나는 만큼 low-rank가 줄어들어서인지 N=64/128의 시간은 비슷하다.
-  -  그리고 그 결과, baseline 대비 N=64일때 더 좋은 결과인것을 볼 수 있다. 오히려 128일때 low-rank 값이 줄어든면서 성능이 나쁜것도 확인할 수 있다. 때로는 거추장스러운 연산을 치워버리는 것이 도움이 될 수 있는데, 그런 관점에서 납득이 가는 결과이다.
-
+  -  Table 2에서 'Sparse FF 64/128'은 N=64/N=128을 의미한다. 즉, hidden vector 1024개 에서 4096개로 뻥튀기 되었다가 다시 1024로 projection될때, 64/128개 마다 하나만 살리겠다는 뜻이다. 그러면 low-rank는 4096/64=64, 4096/128=32가 된다. 그만큼 빨라지는 것을 확인할 수 있다. 그림에서도 4개마다 구간이 나눠져 있는 것을 볼수 있는데, 4개마다 하나만 activation, 즉 N=4이다.
+  
 
 #### Sparse QKV layer
   - decoding speed 자체는 FF가 dominant하긴 하지만, FF를 줄이고 나면 당연히 그 다음으로 QKV/output 연산을 줄여야할 차례이다. 하지만 여기에는 ReLU가 없기 떄문에 위와 같은 적용은 불가능하다.
@@ -41,6 +40,9 @@ tags:
   -  output layer는 날려버렸는데, decoding time에 도움이 안되는것 대비 성능 향상이 없다고 판단한것 같다.
   -  이렇게 해서 나온 결과가 Figure 5에 있는데, log-perplexity가 위와 같은 구조로 했을때 크게 차이나지 않는 것을 볼 수 있다. 특히 conv filter의 크기가 3x3일때가 1x1보다 좋은데, Q/K/V 만드는 단계에서부터 조금씨 다른 vector를 Local하게 보는 것에 따른 장점으로 보인다.
   -  loss를 구할때도 비슷한 구조로 S로 나눠서 했더니, 아주 약간만 하락했고 대신 성능은 더 빨라졌다고 한다.
+
+#### 결과 및 terraformer
   -  <img src="/assets/images/2021-12-01-Scaling Transformers/t6.png" width="100%" height="100%" title="Table 6" alt="Table 6"/>
   -  그렇게 해서 나온 최종 결과이다. T5-base로 17B 모델을 가져와서 37배 빠르게 동작하는 모델을 만들수 있었다고 한다. 
   -  Terraformer에 대한 설명은 조금 디테일이 적은 느낌이라 생략. Reformer와 비슷한 방법을 사용하여 Revisible logic을 이용하여 메모리 사용량을 줄이고, long sequence에 대응될수 있도록 했다.
+  -  Decoding관련된 결과만 보여준 것에 집중할 필요가 있는데, Encoding할때는 batch size가 있기 때문에 위의 Sparse FF 방법을 쓸수 없다. 논문에서는 직접적으로 언급하고 있지 않으니 주의.
